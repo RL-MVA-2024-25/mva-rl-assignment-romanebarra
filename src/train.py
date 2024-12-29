@@ -98,7 +98,7 @@ class ProjectAgent:
 
     def load(self):
         self.model = DQN(self.state_dim, self.action_dim)
-        self.path = 'hiv_agent.pt'
+        self.path = 'src/hiv_agent.pt'
         state_dict = torch.load(self.path, map_location=torch.device('cpu'))
         self.model.load_state_dict(state_dict)
         self.model.eval()
@@ -154,6 +154,6 @@ if __name__ == "__main__":
         score = evaluate_HIV(agent, nb_episode=1)
         if score > best_score:
             best_score = score
-            agent.save("src/hiv_agent.pt")
+            agent.save("hiv_agent.pt")
 
         print(f"Episode {episode + 1}, Reward: {cum_reward:.2e}, Score: {score:.2e}")
